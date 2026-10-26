@@ -1,0 +1,20 @@
+# Secrets and local environment. This repo is public.
+.env
+.env.*
+*.pem
+credentials.json
+*.key
+
+# Game builds are hosted on itch.io or GitHub Releases.
+# Repo files are capped at 100 MB; keep builds out entirely.
+*.exe
+*.zip
+*.pck
+
+# Do not commit files over 25 MB (clips, posters, or otherwise).
+
+# OS and editor junk
+Thumbs.db
+Desktop.ini
+.DS_Store
+*.log
