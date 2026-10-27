@@ -1,14 +1,15 @@
 /* Download and media config. Replace TODO values only. */
 
-const FULL_GAME_URL = "TODO";
+const FULL_GAME_URL = "https://tjc8951.itch.io/cyber-cube-heaven";
 const FULL_GAME_SIZE = "74 MB";
-const DEMO_URL = "TODO";
-const DEMO_SIZE = "248 MB";
-const ITCH_URL = "TODO";
+const DEMO_URL = "https://tjc8951.itch.io/cyber-cube-heaven-demo";
+const DEMO_SIZE = "247 MB";
+const ITCH_URL = "https://tjc8951.itch.io/";
+const GAMEJOLT_URL = "https://gamejolt.com/games/cyber-cube-heaven/1091141";
 const GITHUB_URL = "https://github.com/tcardaro0144-stack/cybercubeheaven-site";
 
-/* "Free" or "Paid, $X". Omitted from the page while this is TODO. */
-const PRICE = "TODO";
+/* Demo is free. Full game is pay what you want on itch.io, and $4.99 on Game Jolt. */
+const PRICE = "The demo is free. On itch.io the full game is pay what you want, including free. On Game Jolt it is $4.99.";
 
 /* Drop files at these paths. Leave the strings as they are. */
 const STAGE1_VIDEO = "assets/stage1.mp4";
@@ -65,19 +66,18 @@ function mountClip(root) {
 
   function showReady() {
     root.classList.add("is-ready");
-    play.hidden = false;
     if (reduce) {
       video.pause();
+      play.hidden = false;
       play.textContent = "Play clip";
       play.setAttribute("aria-pressed", "false");
       return;
     }
+    play.hidden = true;
     const pending = video.play();
     if (pending && typeof pending.catch === "function") {
-      pending.then(function () {
-        play.textContent = "Pause clip";
-        play.setAttribute("aria-pressed", "true");
-      }).catch(function () {
+      pending.catch(function () {
+        play.hidden = false;
         play.textContent = "Play clip";
         play.setAttribute("aria-pressed", "false");
       });
@@ -126,6 +126,9 @@ document.querySelectorAll("[data-link='demo']").forEach(function (anchor) {
 });
 document.querySelectorAll("[data-link='itch']").forEach(function (anchor) {
   wireLink(anchor, ITCH_URL);
+});
+document.querySelectorAll("[data-link='gamejolt']").forEach(function (anchor) {
+  wireLink(anchor, GAMEJOLT_URL);
 });
 document.querySelectorAll("[data-link='github']").forEach(function (anchor) {
   wireLink(anchor, GITHUB_URL);

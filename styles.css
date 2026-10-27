@@ -485,6 +485,7 @@ h3 {
   letter-spacing: 0.04em;
 }
 
+.store-links,
 .footer-links {
   display: flex;
   flex-wrap: wrap;
@@ -492,17 +493,12 @@ h3 {
   margin-top: 1rem;
 }
 
+.store-links a,
 .footer-links a {
   color: var(--cyan);
   font-family: var(--font-display);
   font-weight: 700;
   text-decoration: none;
-}
-
-.footer-links a.is-unavailable {
-  padding: 0.15rem 0.4rem;
-  border-width: 1px;
-  border-radius: 6px;
 }
 
 @media (max-width: 800px) {
